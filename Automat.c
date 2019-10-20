@@ -1,10 +1,8 @@
-#include<stdio.h>
 #include "Automat.h"
-#include<stdint.h>
 AT_DATA at;
-uint8_t parser(uint8_t ch)
+int parser(char ch)
 {
-	static uint8_t state=0;
+	static uint8_t state = 0;
 	static uint32_t line_index, string_index;
 	switch (state)
 	{

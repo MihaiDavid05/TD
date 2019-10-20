@@ -1,8 +1,4 @@
-#include<stdio.h>
-#include<stdint.h>
-#include<stdlib.h>
-#include"Automat.c"
-#include"Automat.c"
+#include"Automat.h"
 int main(int argc, char *argv[]) {
 	FILE *f;
 	if (argc != 2) {
@@ -15,14 +11,14 @@ int main(int argc, char *argv[]) {
 		int stare = 3;
 		while (!feof(f)) {
 			ch = fgetc(f);
-			stare = parse(ch);
+			stare = parser(ch);
 			if (stare <= 0) {
 				printf("Eroare la starea %d", abs(stare));
 				break;
 			}
 		}
 		close(f);
-		
+
 		if (stare == 1) {
 			printf("\r\n");
 			if (at.line_count == 1) {
@@ -37,7 +33,7 @@ int main(int argc, char *argv[]) {
 			}
 			printf("\r\n");
 		}
-		else if (stare == 2){
+		else if (stare == 2) {
 			printf("Mai este nevoie de caractere !");
 		}
 	}
