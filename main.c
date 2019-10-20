@@ -2,7 +2,7 @@
 int main(int argc, char *argv[]) {
 	FILE *f;
 	if (argc != 2) {
-		printf("Trebuie sa dati file path ca si argument !");
+		printf("Trebuie sa dati file path ca si argument !"); //trebuie sa dau de la propreties
 	}
 	else {
 		f = fopen(argv[1], "rb");
