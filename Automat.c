@@ -94,7 +94,7 @@ uint8_t parser(uint8_t ch)
 		{
 			state = 7;
 			at.str[line_index][string_index++] = ch;
-			at.str[line_index++][string_index] = '/0'
+			at.str[line_index++][string_index] = '/0';
 		}
 		else {
 			line_index = 0;
@@ -134,7 +134,7 @@ uint8_t parser(uint8_t ch)
 		{
 			state = 7;
 			at.str[line_index][string_index++] = ch;
-			at.str[line_index++][string_index] = '/0'
+			at.str[line_index++][string_index] = '/0';
 		}
 		else {
 			line_index = 0;
@@ -152,7 +152,7 @@ uint8_t parser(uint8_t ch)
 		{
 			if (ch == 0x0D)
 			{
-			    at.str[line_index++][string_index] = '/0'
+				at.str[line_index++][string_index] = '/0';
 				state = 12;
 			}
 			else {
