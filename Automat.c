@@ -21,27 +21,35 @@ uint8_t parser(uint8_t ch)
 		{
 			state = 2;
 		}
-		else return -state;
+		else {
+			line_index = 0;
+			string_index = 0;
+			return -state;
+		}
 		break;
 	case 2:
 		if (ch == 'E')
 		{
 			state = 3;
-			at.str[line_index++][string_index++] = ch;
+			at.str[line_index][string_index++] = ch;
 		}
 		else {
 			if (ch == 'O')
 			{
 				state = 8;
-				at.str[line_index++][string_index++] = ch;
+				at.str[line_index][string_index++] = ch;
 			}
-			else {
+			else {  //nu mai stiu daca trebuie inclus in string
 				if (ch == '+')
 				{
 					state = 11;
-					at.str[line_index++][string_index++] = ch;
+					//at.str[line_index][string_index++] = ch;
 				}
-				else return -state;
+				else {
+					line_index = 0;
+					string_index = 0;
+					return -state;
+				}
 			}
 		}
 		break;
@@ -49,47 +57,72 @@ uint8_t parser(uint8_t ch)
 		if (ch == 'R')
 		{
 			state = 4;
-			at.str[line_index++][string_index++] = ch;
+			at.str[line_index][string_index++] = ch;
 		}
-		else return -state;
+		else {
+			line_index = 0;
+			string_index = 0;
+			return -state;
+		}
 		break;
 	case 4:
 		if (ch == 'R')
 		{
 			state = 5;
-			at.str[line_index++][string_index++] = ch;
+			at.str[line_index][string_index++] = ch;
 		}
-		else return -state;
+		else {
+			line_index = 0;
+			string_index = 0;
+			return -state;
+		}
 		break;
 	case 5:
 		if (ch == 'O')
 		{
 			state = 6;
-			at.str[line_index++][string_index++] = ch;
+			at.str[line_index][string_index++] = ch;
 		}
-		else return -state;
+		else {
+			line_index = 0;
+			string_index = 0;
+			return -state;
+		}
 		break;
 	case 6:
 		if (ch == 'R')
 		{
 			state = 7;
-			at.str[line_index++][string_index++] = ch;
+			at.str[line_index][string_index++] = ch;
+			at.str[line_index++][string_index] = '/0'
 		}
-		else return -state;
+		else {
+			line_index = 0;
+			string_index = 0;
+			return -state;
+		}
 		break;
 	case 7:
 		if (ch == 0x0D)
 		{
 			state = 8;
 		}
-		else return -state;
+		else {
+			line_index = 0;
+			string_index = 0;
+			return -state;
+		}
 		break;
 	case 8:
 		if (ch == 0x0A)
 		{
 			state = 9;
 		}
-		else return -state;
+		else {
+			line_index = 0;
+			string_index = 0;
+			return -state;
+		}
 		break;
 	case 9:
 	{
@@ -100,23 +133,33 @@ uint8_t parser(uint8_t ch)
 		if (ch == 'K')
 		{
 			state = 7;
-			at.str[line_index++][string_index++] = ch;
+			at.str[line_index][string_index++] = ch;
+			at.str[line_index++][string_index] = '/0'
 		}
-		else return -state;
+		else {
+			line_index = 0;
+			string_index = 0;
+			return -state;
+		}
 		break;
 	case 11:
 		if (ch != 0x0D)
 		{
 			state = 11;
-			at.str[line_index++][string_index++] = ch;
+			at.str[line_index][string_index++] = ch;
 		}
 		else
 		{
 			if (ch == 0x0D)
 			{
+			    at.str[line_index++][string_index] = '/0'
 				state = 12;
 			}
-			else return -state;
+			else {
+				line_index = 0;
+				string_index = 0;
+				return -state;
+			}
 		}
 		break;
 	case 12:
@@ -124,7 +167,11 @@ uint8_t parser(uint8_t ch)
 		{
 			state = 13;
 		}
-		else return -state;
+		else {
+			line_index = 0;
+			string_index = 0;
+			return -state;
+		}
 	case 13:
 		if (ch == '+')
 		{
@@ -136,7 +183,11 @@ uint8_t parser(uint8_t ch)
 			{
 				state = 14;
 			}
-			else return -state;
+			else {
+				line_index = 0;
+				string_index = 0;
+				return -state;
+			}
 		}
 		break;
 	case 14:
@@ -149,56 +200,82 @@ uint8_t parser(uint8_t ch)
 		if (ch == 'O')
 		{
 			state = 16;
-			at.str[line_index++][string_index++] = ch;
+			at.str[line_index][string_index++] = ch;
 		}
 		else {
 			if (ch == 'E')
 			{
 				state = 17;
-				at.str[line_index++][string_index++] = ch;
+				at.str[line_index][string_index++] = ch;
 			}
-			else return -state;
+			else {
+				line_index = 0;
+				string_index = 0;
+				return -state;
+			}
 		}
 		break;
 	case 16:
 		if (ch == 'K')
 		{
 			state = 7;
-			at.str[line_index++][string_index++] = ch;
+			at.str[line_index][string_index++] = ch;
+			at.str[line_index++][string_index] = '/0';
 		}
-		else return -state;
+		else {
+			line_index = 0;
+			string_index = 0;
+			return -state;
+		}
 		break;
 	case 17:
 		if (ch == 'R')
 		{
 			state = 18;
-			at.str[line_index++][string_index++] = ch;
+			at.str[line_index][string_index++] = ch;
 		}
-		else return -state;
+		else {
+			line_index = 0;
+			string_index = 0;
+			return -state;
+		}
 		break;
 	case 18:
 		if (ch == 'R')
 		{
 			state = 19;
-			at.str[line_index++][string_index++] = ch;
+			at.str[line_index][string_index++] = ch;
 		}
-		else return -state;
+		else {
+			line_index = 0;
+			string_index = 0;
+			return -state;
+		}
 		break;
 	case 19:
 		if (ch == 'O')
 		{
 			state = 20;
-			at.str[line_index++][string_index++] = ch;
+			at.str[line_index][string_index++] = ch;
 		}
-		else return -state;
+		else {
+			line_index = 0;
+			string_index = 0;
+			return -state;
+		}
 		break;
 	case 20:
 		if (ch == 'R')
 		{
 			state = 7;
-			at.str[line_index++][string_index++] = ch;
+			at.str[line_index][string_index++] = ch;
+			at.str[line_index++][string_index] = '/0';
 		}
-		else return -state;
+		else {
+			line_index = 0;
+			string_index = 0;
+			return -state;
+		}
 	}
 	return 2;
 }
