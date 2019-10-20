@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
 			}
 			printf("\r\n");
 		}
-		else {
+		else if (stare == 2){
 			printf("Mai este nevoie de caractere !");
 		}
 	}
