@@ -41,7 +41,6 @@ int parser(char ch)
 				if (ch == '+')
 				{
 					state = 11;
-					//at.str[line_index][string_index++] = ch;
 				}
 				else {
 					line_index = 0;
@@ -92,7 +91,8 @@ int parser(char ch)
 		{
 			state = 7;
 			at.str[line_index][string_index++] = ch;
-			at.str[line_index++][string_index] = '/0';
+			at.str[line_index++][string_index] = '\0';
+			at.line_count++;
 		}
 		else {
 			line_index = 0;
@@ -132,7 +132,8 @@ int parser(char ch)
 		{
 			state = 7;
 			at.str[line_index][string_index++] = ch;
-			at.str[line_index++][string_index] = '/0';
+			at.str[line_index++][string_index] = '\0';
+			at.line_count++;
 		}
 		else {
 			line_index = 0;
@@ -150,7 +151,8 @@ int parser(char ch)
 		{
 			if (ch == 0x0D)
 			{
-				at.str[line_index++][string_index] = '/0';
+				at.str[line_index++][string_index] = '\0';
+				at.line_count++;
 				state = 12;
 			}
 			else {
@@ -218,7 +220,8 @@ int parser(char ch)
 		{
 			state = 7;
 			at.str[line_index][string_index++] = ch;
-			at.str[line_index++][string_index] = '/0';
+			at.str[line_index++][string_index] = '\0';
+			at.line_count++;
 		}
 		else {
 			line_index = 0;
@@ -267,7 +270,8 @@ int parser(char ch)
 		{
 			state = 7;
 			at.str[line_index][string_index++] = ch;
-			at.str[line_index++][string_index] = '/0';
+			at.str[line_index++][string_index] = '\0';
+			at.line_count++;
 		}
 		else {
 			line_index = 0;
