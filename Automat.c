@@ -39,7 +39,7 @@ uint8_t parser(uint8_t ch)
 				state = 8;
 				at.str[line_index][string_index++] = ch;
 			}
-			else {  //nu mai stiu daca trebuie inclus in string
+			else {
 				if (ch == '+')
 				{
 					state = 11;
