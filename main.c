@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
 				break;
 			}
 		}
-		close(f);
+		fclose(f);
 
 		if (stare == 1) {
 			printf("\r\n");

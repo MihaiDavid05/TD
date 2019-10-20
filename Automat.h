@@ -13,4 +13,5 @@ typedef struct {
 
 extern AT_DATA at;
 int parser(char);
+
 #endif // !AUTOMAT_H
