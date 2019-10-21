@@ -2,7 +2,7 @@
 int main(int argc, char *argv[]) {
 	FILE *f;
 	if (argc != 2) {
-		printf("Trebuie sa dati file path ca si argument !");
+		printf("\nTrebuie sa dati file path ca si argument !");
 	}
 	else {
 		f = fopen(argv[1], "rb");
@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
 			printf("\r\n");
 		}
 		else if (stare == 2) {
-			printf("Mai este nevoie de caractere !");
+			printf("\nMai este nevoie de caractere !");
 		}
 	}
 
