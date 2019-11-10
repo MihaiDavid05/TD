@@ -1,4 +1,1 @@
-﻿  Main.c
-c:\users\mihaid\desktop\facultate\td\project2\application\main.c(19): warning C4013: 'abs' undefined; assuming extern returning int
-c:\users\mihaid\desktop\facultate\td\project2\application\main.c(32): warning C4018: '<': signed/unsigned mismatch
-  Application.vcxproj -> C:\Users\MihaiD\Desktop\Facultate\TD\Project2\Debug\Application.exe
+﻿  Application.vcxproj -> C:\Users\MihaiD\Desktop\Facultate\TD\Project2\Debug\Application.exe

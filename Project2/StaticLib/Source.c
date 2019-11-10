@@ -140,17 +140,33 @@ int parser(char ch)
 	case 11:
 		if (ch != 0x0D)
 		{
-			state = 11;
-			at.str[line_index][string_index++] = ch;
+			if (string_index < STR_SIZE) {
+				state = 11;
+				at.str[line_index][string_index++] = ch;
+			}
+			else {
+				line_index = 0;
+				string_index = 0;
+				printf("Linie prea lunga!");
+				return -state;
+			}
 		}
 		else
 		{
 			if (ch == 0x0D)
 			{
-				at.str[line_index++][string_index] = '\0';
-				string_index = 0;
-				at.line_count++;
-				state = 12;
+				if (line_index < MAX_LINE) {
+					at.str[line_index++][string_index] = '\0';
+					string_index = 0;
+					at.line_count++;
+					state = 12;
+				}
+				else {
+					line_index = 0;
+					string_index = 0;
+					printf("Prea multe linii!");
+					return -state;
+				}
 			}
 			else {
 				line_index = 0;
