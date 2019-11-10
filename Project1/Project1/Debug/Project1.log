@@ -1,8 +1,0 @@
-﻿  Main.c
-c:\users\mihaid\desktop\facultate\td\project1\project1\main.c(18): warning C4013: 'abs' undefined; assuming extern returning int
-c:\users\mihaid\desktop\facultate\td\project1\project1\main.c(31): warning C4018: '<': signed/unsigned mismatch
-c:\users\mihaid\desktop\facultate\td\project1\project1\main.c(8): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
-  Source.c
-  Generating Code...
-  Project1.vcxproj -> C:\Users\MihaiD\Desktop\Facultate\TD\Project1\Debug\Project1.exe
