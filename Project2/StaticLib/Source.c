@@ -30,8 +30,15 @@ int parser(char ch,bool special)
 		break;
 	case 2:
 		if (special) {
-			at.str[line_index][string_index++] = ch;
-			state = 11;
+			if (ch != 0x0D && ch != '+') {
+				at.str[line_index][string_index++] = ch;
+				state = 11;
+			}
+			else {
+				line_index = 0;
+				string_index = 0;
+				return -state;
+			}
 		}
 		else{
 			if (ch == 'E')
@@ -190,7 +197,15 @@ int parser(char ch,bool special)
 		break;
 	case 13:
 		if (special) {
-			state = 14;
+			if (ch == 0x0D)
+			{
+				state = 14;
+			}
+			else {
+				line_index = 0;
+				string_index = 0;
+				return -state;
+			}
 		}
 		else{
 			if (ch == '+')
