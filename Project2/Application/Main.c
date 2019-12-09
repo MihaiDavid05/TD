@@ -1,5 +1,8 @@
 #define _CRT_SECURE_NO_DEPRECATE
-#include"Header.h"
+#include "Header.h"
+#include<stdio.h>
+
+
 int main(int argc, char *argv[]) {
 	FILE *f;
 	if (argc != 2) {
@@ -9,11 +12,14 @@ int main(int argc, char *argv[]) {
 		f = fopen(argv[1], "rb");
 
 		char ch;
+
 		int stare = 3;
+		bool special = true;
+
 		while (!feof(f)) {
 			ch = fgetc(f);
 			printf(" %c ", ch);
-			stare = parser(ch);
+			stare = parser(ch,special);
 			printf("\n%d", stare);
 			if (stare <= 0) {
 				printf("\nEroare la starea %d , text gresit !", abs(stare));
@@ -30,7 +36,12 @@ int main(int argc, char *argv[]) {
 			else {
 				int i;
 				for (i = 0; i < at.line_count; i++) {
-					printf("+%s\r\n", at.str[i]);
+					if (special) {
+						printf("%s\r\n", at.str[i]);
+					}
+					else {
+						printf("+%s\r\n", at.str[i]);
+					}
 				}
 				printf("\r\n");
 				printf("OK");

@@ -1,7 +1,9 @@
 #include "Header.h"
+#include<stdio.h>
+
 AT_DATA at;
 
-int parser(char ch)
+int parser(char ch,bool special)
 {
 	static uint8_t state = 0;
 	static uint32_t line_index, string_index;
@@ -27,24 +29,30 @@ int parser(char ch)
 		}
 		break;
 	case 2:
-		if (ch == 'E')
-		{
-			state = 3;
+		if (special) {
+			at.str[line_index][string_index++] = ch;
+			state = 11;
 		}
-		else {
-			if (ch == 'O')
+		else{
+			if (ch == 'E')
 			{
-				state = 10;
+				state = 3;
 			}
 			else {
-				if (ch == '+')
+				if (ch == 'O')
 				{
-					state = 11;
+					state = 10;
 				}
 				else {
-					line_index = 0;
-					string_index = 0;
-					return -state;
+					if (ch == '+')
+					{
+						state = 11;
+					}
+					else {
+						line_index = 0;
+						string_index = 0;
+						return -state;
+					}
 				}
 			}
 		}
@@ -145,10 +153,7 @@ int parser(char ch)
 				at.str[line_index][string_index++] = ch;
 			}
 			else {
-				line_index = 0;
-				string_index = 0;
-				printf("Linie prea lunga!");
-				return -state;
+				state = 11;
 			}
 		}
 		else
@@ -162,10 +167,7 @@ int parser(char ch)
 					state = 12;
 				}
 				else {
-					line_index = 0;
-					string_index = 0;
-					printf("Prea multe linii!");
-					return -state;
+					state = 12;
 				}
 			}
 			else {
@@ -187,20 +189,25 @@ int parser(char ch)
 		}
 		break;
 	case 13:
-		if (ch == '+')
-		{
-			state = 11;
+		if (special) {
+			state = 14;
 		}
-		else
-		{
-			if (ch == 0x0D)
+		else{
+			if (ch == '+')
 			{
-				state = 14;
+				state = 11;
 			}
-			else {
-				line_index = 0;
-				string_index = 0;
-				return -state;
+			else
+			{
+				if (ch == 0x0D)
+				{
+					state = 14;
+				}
+				else {
+					line_index = 0;
+					string_index = 0;
+					return -state;
+				}
 			}
 		}
 		break;

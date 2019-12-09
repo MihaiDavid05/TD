@@ -3,7 +3,6 @@
 #define AUTOMAT_H
 #include<stdint.h>
 #include<stdbool.h>
-#include<stdio.h>
 #define MAX_LINE 1000
 #define STR_SIZE 150
 typedef struct {
@@ -13,5 +12,5 @@ typedef struct {
 }AT_DATA;
 
 extern AT_DATA at;
-int parser(char);
+int parser(char ch, bool special);
 #endif // !AUTOMAT_H
