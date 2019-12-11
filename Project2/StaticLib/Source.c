@@ -7,9 +7,28 @@ int parser(char ch,bool special)
 {
 	static uint8_t state = 0;
 	static uint32_t line_index, string_index;
+	int i;
 	switch (state)
 	{
 	case 0:
+		line_index = 0;
+		string_index = 0;
+
+		//printf("Matricea inainte:\n");
+		//for (i = 0; i < at.line_count; i++) {
+		//	printf("%s ", (char*)at.str[i]);
+		//}
+		//printf("\n");
+
+		at.str[0][0] = '\0';
+
+		//printf("Matricea dupa:\n");
+		//for (i = 0; i < at.line_count; i++) {
+		//	printf("%s ",(char*)at.str[i]);
+		//}
+		//printf("\n");
+
+		at.line_count = 0;
 
 		if (ch == 0x0D)
 		{
@@ -134,9 +153,11 @@ int parser(char ch,bool special)
 	case 9:
 	{
 		if (at.ok == false) {
+			state = 0;
 			return 1;
 		}
 		else {
+			state = 0;
 			return 1;
 		}
 	}

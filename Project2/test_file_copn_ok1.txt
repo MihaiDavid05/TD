@@ -1,0 +1,13 @@
+
++COPN: "36320", "DIGICEL"
++COPN: "36301", "SETAR GSM"
++COPN: "41201", "AF AWCC"
++COPN: "41240", "MTN AF"
++COPN: "40433", "AIRCEL"
++COPN: "90105", "Thuraya"
++COPN: "90112", "MCP Maritime Com"
++COPN: "60910", "no name"
++COPN: "28310", "no name"
++COPN: "90121", "Seanet"
+
+OK

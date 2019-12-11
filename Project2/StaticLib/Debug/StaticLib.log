@@ -1,2 +1,4 @@
 ﻿  Source.c
+c:\users\mihaid\desktop\facultate\td\project2\staticlib\source.c(18): warning C4018: '<': signed/unsigned mismatch
+c:\users\mihaid\desktop\facultate\td\project2\staticlib\source.c(26): warning C4018: '<': signed/unsigned mismatch
   StaticLib.vcxproj -> C:\Users\MihaiD\Desktop\Facultate\TD\Project2\Debug\StaticLib.lib
